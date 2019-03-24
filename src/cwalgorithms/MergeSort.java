@@ -14,10 +14,14 @@ import java.util.Arrays;
 public class MergeSort {
     
     private int[] array;
+    private int time;
+    private int space;
     
     public MergeSort(int size){
         
         array = new ArrayUtils(size).initializeArray();
+        time = 0;
+        space = 0;
         
     }
     
@@ -30,11 +34,19 @@ public class MergeSort {
         int[] a1 = new int[n1];
         int[] a2 = new int[n2];
                 
-        for(int i = 0; i < n1; i++)
+        for(int i = 0; i < n1; i++){
+            
             a1[i] = array[left + i];
+            space++;
         
-        for(int i = 0; i < n2; i++)
+        }
+        
+        for(int i = 0; i < n2; i++){
+        
             a2[i] = array[middle + 1 + i];
+            space++;
+        
+        }
             
         int i = 0;
         int j = 0;
@@ -55,6 +67,7 @@ public class MergeSort {
             }
             
             k++;
+            time++;
         
         }
         
@@ -63,14 +76,15 @@ public class MergeSort {
             array[k] = a1[i];
             i++;
             k++;
+            time++;
         
         }
         while(j < n2){
         
-        
             array[k] = a2[j];
             j++;
             k++;
+            time++;
             
         }
         
@@ -87,6 +101,16 @@ public class MergeSort {
         
         }
         
+    }
+    
+    //Returns time taken
+    public int getTime(){
+        return time;
+    }
+    
+    //Returns space taken
+    public int getSpace(){
+        return space;
     }
     
     @Override

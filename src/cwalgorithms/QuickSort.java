@@ -14,9 +14,13 @@ import java.util.Arrays;
 public class QuickSort {
     
     private int[] array;
+    private int time; 
     
     public QuickSort(int size){
+        
         array = new ArrayUtils(size).initializeArray();
+        time = 0;
+        
     }
     
     public int partition(int left, int right){
@@ -29,10 +33,20 @@ public class QuickSort {
         
         while(true){
         
-            do{ x++; }
+            do{ 
+                
+                x++; 
+                time++;
+                
+            }
             while(array[x] < pivot);
             
-            do{ y--; }
+            do{ 
+                
+                y--;
+                time++;
+                
+            }
             while(array[y] > pivot);
                 
             if(x < y){
@@ -40,9 +54,15 @@ public class QuickSort {
                 int temp = array[x];
                 array[x] = array[y];
                 array[y] = temp;
+                time++;
                 
             }
-            else return y;
+            else{
+            
+                time++;
+                return y;
+            
+            }
                 
         }
         
@@ -59,6 +79,11 @@ public class QuickSort {
         
         }
     
+    }
+    
+    //Returns time taken 
+    public int getTime(){
+        return time;
     }
     
     @Override

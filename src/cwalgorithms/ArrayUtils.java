@@ -13,21 +13,26 @@ import java.util.Random;
  */
 public class ArrayUtils {
     
+    //Array 
     private int[] array;
+    //Random object
     private Random r;
+    
+    //Constructor
     public ArrayUtils(int size){
         
+        //Array initialization
         array = new int[size];
+        //Random initialization
         r = new Random();
         
     }
     
+    //Fills up array with random generated ints
     public int[] initializeArray(){
     
         for(int i = 0; i < array.length; i++){
-        
             array[i] = r.nextInt((100 - 0) + 1) + 1;
-        
         }
         
         return array;
